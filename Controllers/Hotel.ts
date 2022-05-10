@@ -14,15 +14,11 @@ export class HotelController {
     public findAll = (req: Request, res: Response, next: NextFunction) => {
 
         service.findAll()
-        .then(result => {
-            baseController.sendResponse(result, req, res);
-        })
-        .catch(err => { baseController.sendResponse(err, req, res.status(500)); });
-
-
-
-}
-
+            .then(result => {
+                baseController.sendResponse(result, req, res);
+            })
+            .catch(err => { baseController.sendResponse(err, req, res.status(400)); });
+    }
     public create = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const item = req.body;
@@ -30,48 +26,8 @@ export class HotelController {
             const result = await service.create(item);
             baseController.sendResponse(result, req, res);
         } catch (error) {
-             baseController.sendResponse(error, req, res.status(500)); 
+            baseController.sendResponse(error, req, res.status(400));
         }
-        
-    }
-
-    public update =  (req: Request, res: Response, next: NextFunction) => {
-        const item = req.body;
-          const id = req.params.id;
-          item.updatedAt = new Date();
-        service.update(id, item)
-        .then(result => {
-            baseController.sendResponse(result, req, res);
-        })
-        .catch(err => { baseController.sendResponse(err, req, res.status(500)); });
-    }
-
-    public findOne =  (req: Request, res: Response, next: NextFunction) => {
-        const item = req.body;
-          const id = req.params.id;
-        service.findOne(id)
-        .then(result => {
-            baseController.sendResponse(result, req, res);
-        })
-        .catch(err => { baseController.sendResponse(err, req, res.status(500)); });
-    }
-    public findItem =  (req: Request, res: Response, next: NextFunction) => {
-        const item = req.body;
-        service.findItem(item)
-        .then(result => {
-            baseController.sendResponse(result, req, res);
-        })
-        .catch(err => { baseController.sendResponse(err, req, res.status(500)); });
-
-    }
-
-    public delete = (req: Request, res: Response, next: NextFunction) => {
-        const id = req.params.id;
-        service.delete(id)
-            .then(result => {
-                baseController.sendResponse(result, req, res);
-            })
-            .catch(err => { baseController.sendResponse(err, req, res.status(500)); });
 
     }
 }

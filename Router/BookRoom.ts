@@ -21,10 +21,8 @@ export class BookRoomRouter {
 
     routers() {
         this.Router.get('/findAll', tokenController.RoleAdminAndUser, Controller.findAll);
-        this.Router.get('/findOne/:id', tokenController.RoleAdminAndUser, Controller.findOne);
         this.Router.post('/create', tokenController.RoleAdminAndUser, Controller.create);
-        this.Router.put('/update/:id', tokenController.RoleAdminAndUser, Controller.update);
-        this.Router.delete('/delete/:id', tokenController.RoleAdminAndUser, Controller.delete);
+
     }
 
     public config(): void {

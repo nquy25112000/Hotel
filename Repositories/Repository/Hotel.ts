@@ -10,24 +10,24 @@ export class HotelRepository extends KnexRepository<Hotel> {
         super(hotel.tableName);
     }
 
-    checkNameHotelCreate(name : string): Promise<Hotel[]> {
+    checkNameHotelCreate(name: string): Promise<Hotel[]> {
         return knex(this.tableName)
-                .where('name', '=', name)
-                .select()
-                ;
+            .where('name', '=', name)
+            .select()
+            ;
     }
-    checkNameHotelUpdate(id: string, name : string ): Promise<Hotel[]> {
+    checkNameHotelUpdate(id: string, name: string): Promise<Hotel[]> {
         return knex(this.tableName)
-                .whereNot('id', '=', id)
-                .andWhere('name', '=', name)
-                .select()
-                ;
+            .whereNot('id', '=', id)
+            .andWhere('name', '=', name)
+            .select()
+            ;
     }
 
-    inforUser(id: string): Promise<any[]> {
+    findUser(id: string): Promise<any[]> {
         return knex('Users')
-                .where('id', '=', id)
-                .select('fullName', 'birtDate', 'adress' , 'phone')
-                ;
+            .where('id', '=', id)
+            .select('username', 'password', 'fullName', 'birtDate', 'adress', 'phone')
+            ;
     }
 }

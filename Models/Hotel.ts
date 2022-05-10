@@ -2,7 +2,6 @@ import { Connect } from '../Config/connect'
 import Bookshelf from 'bookshelf';
 import { Users } from './Users';
 import { Room } from './Room';
-import { Service } from './Service';
 
 
 
@@ -18,8 +17,5 @@ export class Hotel extends bookshelf.Model<Hotel> {
     }
     room(): Bookshelf.Collection<Room> {
         return this.hasMany(Room, 'holtelId');
-    }
-    service(): Bookshelf.Collection<Service> {
-        return this.hasMany(Service, 'holtelId');
     }
 }

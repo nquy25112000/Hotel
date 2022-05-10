@@ -18,12 +18,8 @@ export class HotelRouter {
 
     routers() {
         this.Router.get('/findAll', Controller.findAll);
-        this.Router.get('/findOne/:id', Controller.findOne);
-        this.Router.get('/findItem', Controller.findItem);
-
         this.Router.post('/create', Controller.create);
-        this.Router.put('/update/:id', Controller.update);
-        this.Router.delete('/delete/:id', Controller.delete);
+
     }
 
     public config(): void {
